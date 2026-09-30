@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Air Conditioner Guide | Blue Plane Stay</title>
+<style>
+:root{--navy:#14203A;--ink:#1B2233;--mute:#6E7484;--paper:#FFFCF6;--line:#E2D9C8;--mint:#2E9A8B;--mint-soft:#E4F4F0;--amber:#EFC27A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","PingFang SC","Microsoft YaHei","Hiragino Sans","Yu Gothic",system-ui,sans-serif;line-height:1.55;font-size:16px}
+main{max-width:680px;margin:0 auto;padding:18px 16px 40px}
+h1{font-size:24px;line-height:1.25;margin:4px 0 4px;color:var(--navy)}
+.sub{color:var(--mute);font-size:14px;margin:0 0 12px}
+img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#fff}
+.lead{background:var(--mint-soft);border-radius:12px;padding:10px 12px;margin:14px 0}
+ol{padding-left:0;list-style:none;margin:0;display:flex;flex-direction:column;gap:8px}
+#t-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+#t-list li b{color:var(--navy)}
+.tips li{margin:2px 0}
+.kr{display:inline-block;font-size:13px;background:#F3ECDF;border-radius:6px;padding:0 6px;margin-left:4px}
+.tips{margin-top:14px;background:#FFF6E3;border:1px solid var(--amber);border-radius:12px;padding:10px 12px}
+.tips ul{margin:4px 0 0;padding-left:18px}
+footer{margin-top:18px;color:var(--mute);font-size:13px;text-align:center}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 6px}
+.brand{color:var(--mute);font-size:14px}
+.lang{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 6px 4px 12px}
+.lang select{font:inherit;font-size:15px;border:0;background:transparent;color:var(--ink);padding:4px 2px;max-width:170px}
+.lang:focus-within{outline:2px solid var(--mint);outline-offset:2px}
+.pic{position:relative;container-type:inline-size;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.pic img{display:block;border:0;border-radius:0}
+.ov{position:absolute;background:#F7F7F7;color:#1D3557;font-size:1.9cqw;line-height:1.28;overflow:hidden;padding:.2cqw .4cqw}
+.ov b{display:block;color:#1F4E9A;font-size:2.15cqw;margin-bottom:.3cqw}
+.ov.head{background:#F7F7F9;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:1cqw}
+.ov.head b{font-size:4.4cqw;line-height:1.15}
+.ov.head span{font-size:2.3cqw;background:#E8F0FA;border-radius:1.2cqw;padding:1cqw 1.4cqw}
+.ov.mode{background:#FBFCFD}
+.pic.en .ov{display:none}
+.hint{margin:6px 2px 0;font-size:13px;color:var(--mute)}
+.pic img,.shots img{cursor:zoom-in}
+#zoom{position:fixed;inset:0;z-index:50;background:rgba(20,32,58,.94);overflow:auto;-webkit-overflow-scrolling:touch}
+#zoom[hidden]{display:none}
+#zoomIn{padding:58px 10px 28px;width:max-content;min-width:100%}
+#zoomIn .pic{width:1000px;max-width:none;cursor:default}
+#zoomIn .zimg{display:block;max-width:none;height:auto;border-radius:10px;border:0}
+#zoomX{position:fixed;top:10px;right:12px;z-index:51;font:inherit;font-size:22px;line-height:1;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--navy);cursor:pointer}
+#zoomX:focus-visible{outline:3px solid var(--amber)}
+.home{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;text-decoration:none;font-size:19px;margin-right:8px;vertical-align:middle}
+.home:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.brand{display:inline-flex;align-items:center;white-space:nowrap}
+@media (max-width:420px){.brand .bname{display:none}}
+.top{position:sticky;top:0;z-index:20;background:var(--paper);margin:0 -16px 6px;padding:8px 16px;box-shadow:0 1px 0 var(--line)}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><span class="brand"><a class="home" id="home" href="../guide/" aria-label="All guides" title="All guides">🏠</a><span class="bname">Blue Plane Stay</span></span>
+  <label class="lang"><span aria-hidden="true">🌐</span>
+   <select id="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ko">한국어</option>
+    <option value="zh-Hans">简体中文</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="ja">日本語</option>
+    <option value="vi">Tiếng Việt</option>
+    <option value="th">ภาษาไทย</option>
+    <option value="id">Bahasa Indonesia</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="ms">Bahasa Melayu</option>
+    <option value="tl">Filipino</option>
+    <option value="ru">Русский</option>
+    <option value="mn">Монгол</option>
+   </select></label>
+</div>
+<h1 id="t-title">Air Conditioner Guide</h1>
+<div class="pic" id="pic" role="button" tabindex="0" aria-label="Enlarge picture">
+  <img src="remote.jpg" alt="Samsung air conditioner remote control with numbered buttons" width="1200" height="1200">
+  <div class="ov head" data-k="head" aria-hidden="true" style="left:4.583%;top:1.000%;width:92.500%;height:19.333%"></div>
+  <div class="ov" data-k="0" aria-hidden="true" style="left:11.667%;top:41.250%;width:25.000%;height:10.167%"></div>
+  <div class="ov" data-k="1" aria-hidden="true" style="left:11.250%;top:54.167%;width:25.417%;height:11.667%"></div>
+  <div class="ov" data-k="2" aria-hidden="true" style="left:11.667%;top:67.167%;width:25.000%;height:12.083%"></div>
+  <div class="ov" data-k="3" aria-hidden="true" style="left:12.500%;top:80.417%;width:24.167%;height:14.583%"></div>
+  <div class="ov mode" data-k="4" aria-hidden="true" style="left:69.833%;top:24.500%;width:20.333%;height:29.333%"></div>
+  <div class="ov" data-k="5" aria-hidden="true" style="left:71.500%;top:57.333%;width:26.500%;height:9.333%"></div>
+  <div class="ov" data-k="6" aria-hidden="true" style="left:71.500%;top:67.333%;width:26.500%;height:9.000%"></div>
+  <div class="ov" data-k="7" aria-hidden="true" style="left:71.500%;top:76.833%;width:26.500%;height:9.333%"></div>
+  <div class="ov" data-k="8" aria-hidden="true" style="left:40.667%;top:91.083%;width:25.000%;height:8.333%"></div>
+  <div class="ov" data-k="9" aria-hidden="true" style="left:67.333%;top:89.833%;width:30.000%;height:9.167%"></div>
+</div>
+<p class="hint" id="t-hint"></p>
+<p class="lead" id="t-lead"></p>
+<ol id="t-list"></ol>
+<div class="tips"><b id="t-tips-h"></b><ul id="t-tips"></ul></div>
+<footer>Blue Plane Stay</footer>
+<div id="zoom" hidden role="dialog" aria-modal="true" aria-label="Picture"><button type="button" id="zoomX" aria-label="Close">✕</button><div id="zoomIn"></div></div>
+</main>
+<script>
+const HINT = {"en": "Tap a picture to see it larger", "ko": "그림을 누르면 크게 볼 수 있어요", "zh-Hans": "点击图片可放大查看", "zh-Hant": "點擊圖片可放大查看", "ja": "画像をタップすると拡大できます", "vi": "Chạm vào hình để xem lớn hơn", "th": "แตะที่รูปเพื่อดูภาพขยาย", "id": "Ketuk gambar untuk melihat lebih besar", "es": "Toca una imagen para verla más grande", "fr": "Touchez une image pour l'agrandir", "de": "Bild antippen, um es zu vergrößern", "ms": "Ketik gambar untuk lihat lebih besar", "tl": "I-tap ang larawan para makita nang mas malaki", "ru": "Нажмите на картинку, чтобы увеличить", "mn": "Зургийг дарж томоор харна уу"};
+const T = {
+ en: {title:"Air Conditioner Guide", lead:"Switch between cooling and heating with the Mode button (모드). The numbers below match the picture.",
+  items:[["Power","Turn the air conditioner on or off.",""],
+   ["2. Temperature","Press + or − to set the temperature.","온도"],
+   ["3. Wind-Free","Gentle cooling without direct wind.","무풍"],
+   ["4. Left / Right airflow","Changes the airflow from side to side.",""],
+   ["5. Mode","Each press changes the mode: Cool ❄ or Heat ☀.","모드"],
+   ["Up / Down airflow","Changes the airflow up and down.","바람"],
+   ["7. Timer","Set a timer or reservation.","예약설정"],
+   ["8. More functions","Extra features and settings.","부가기능"],
+   ["9. OK","Confirm your choice.","확인"],
+   ["10. Back","Go back or cancel a setting.",""]],
+  tipsH:"Please remember", tips:["Close windows and doors while the air conditioner is on.","Please turn off the air conditioner when you go out.","The buttons on the remote are in Korean. The small tag next to each item shows the Korean word on that button."]},
+ ko: {title:"에어컨 사용법", lead:"모드 버튼으로 냉방과 난방을 바꿀 수 있어요. 아래 번호는 그림의 번호와 같아요.",
+  items:[["전원","에어컨을 켜고 끕니다.",""],
+   ["2. 온도","+ 또는 − 로 원하는 온도를 맞춥니다.","온도"],
+   ["3. 무풍","바람이 직접 닿지 않게 부드럽게 시원해집니다.","무풍"],
+   ["4. 좌우 바람","바람 방향을 좌우로 바꿉니다.",""],
+   ["5. 모드","누를 때마다 냉방 ❄, 난방 ☀ 순서로 바뀝니다.","모드"],
+   ["상하 바람","바람 방향을 위아래로 바꿉니다.","바람"],
+   ["7. 예약","꺼짐 예약이나 예약 설정을 합니다.","예약설정"],
+   ["8. 부가기능","그 밖의 기능과 설정입니다.","부가기능"],
+   ["9. 확인","선택을 확정합니다.","확인"],
+   ["10. 뒤로","이전 단계로 가거나 설정을 취소합니다.",""]],
+  tipsH:"꼭 지켜 주세요", tips:["에어컨을 켤 때는 창문과 문을 닫아 주세요.","외출할 때는 에어컨을 꺼 주세요.","리모컨 버튼 이름은 한국어로 적혀 있고, 항목 옆 작은 표시가 버튼 글자예요."]},
+ "zh-Hans": {title:"空调使用说明", lead:"用「모드（模式）」键切换制冷和制热。下面的编号与图片上的编号一致。",
+  items:[["电源","开启或关闭空调。",""],
+   ["2. 温度","按 + 或 − 调节温度。","온도"],
+   ["3. 无风感","不直吹的柔和制冷。","무풍"],
+   ["4. 左右风向","左右调节出风方向。",""],
+   ["5. 模式","每按一次切换：制冷 ❄ 或制热 ☀。","모드"],
+   ["上下风向","上下调节出风方向。","바람"],
+   ["7. 定时","设置定时或预约。","예약설정"],
+   ["8. 附加功能","其他功能和设置。","부가기능"],
+   ["9. 确认","确认所选内容。","확인"],
+   ["10. 返回","返回上一步或取消设置。",""]],
+  tipsH:"温馨提示", tips:["开空调时请关好门窗。","外出时请关闭空调。","遥控器上的按键是韩文，每项旁边的小标签就是按键上的韩文。"]},
+ "zh-Hant": {title:"冷氣使用說明", lead:"用「모드（模式）」鍵切換冷氣和暖氣。下面的編號與圖片上的編號相同。",
+  items:[["電源","開啟或關閉冷氣。",""],
+   ["2. 溫度","按 + 或 − 調整溫度。","온도"],
+   ["3. 無風感","不直吹的柔和冷氣。","무풍"],
+   ["4. 左右風向","左右調整出風方向。",""],
+   ["5. 模式","每按一次切換：冷氣 ❄ 或暖氣 ☀。","모드"],
+   ["上下風向","上下調整出風方向。","바람"],
+   ["7. 定時","設定定時或預約。","예약설정"],
+   ["8. 附加功能","其他功能與設定。","부가기능"],
+   ["9. 確認","確認所選內容。","확인"],
+   ["10. 返回","回到上一步或取消設定。",""]],
+  tipsH:"溫馨提醒", tips:["開冷氣時請關好門窗。","外出時請關閉冷氣。","遙控器上的按鍵是韓文，每項旁邊的小標籤就是按鍵上的韓文。"]},
+ ja: {title:"エアコンの使い方", lead:"「모드（モード）」ボタンで冷房と暖房を切り替えます。下の番号は画像の番号と同じです。",
+  items:[["電源","エアコンを入れたり切ったりします。",""],
+   ["2. 温度","＋ または − で温度を設定します。","온도"],
+   ["3. 無風","風が直接当たらない、やさしい冷房です。","무풍"],
+   ["4. 左右の風向","風向きを左右に変えます。",""],
+   ["5. モード","押すたびに冷房 ❄ と暖房 ☀ が切り替わります。","모드"],
+   ["上下の風向","風向きを上下に変えます。","바람"],
+   ["7. タイマー","タイマーや予約を設定します。","예약설정"],
+   ["8. その他の機能","そのほかの機能と設定です。","부가기능"],
+   ["9. 決定","選んだ内容を決定します。","확인"],
+   ["10. 戻る","前の画面に戻る、または設定を取り消します。",""]],
+  tipsH:"お願い", tips:["エアコン使用中は窓とドアを閉めてください。","外出するときはエアコンを消してください。","リモコンのボタンは韓国語です。各項目の横の小さな表示がボタンの文字です。"]},
+ "vi": {title:"Hướng dẫn dùng máy lạnh", lead:"Chuyển giữa làm mát và sưởi bằng nút Mode (모드). Các số bên dưới giống với số trong hình.",
+  items:[["Nguồn", "Bật hoặc tắt máy lạnh.", ""], ["2. Nhiệt độ", "Nhấn + hoặc − để chỉnh nhiệt độ.", "온도"], ["3. Không gió (Wind-Free)", "Làm mát nhẹ nhàng, không thổi gió trực tiếp.", "무풍"], ["4. Hướng gió trái / phải", "Đổi hướng gió sang trái và phải.", ""], ["5. Chế độ", "Mỗi lần nhấn sẽ đổi chế độ: Làm mát ❄ hoặc Sưởi ☀.", "모드"], ["Hướng gió lên / xuống", "Đổi hướng gió lên và xuống.", "바람"], ["7. Hẹn giờ", "Cài hẹn giờ bật hoặc tắt.", "예약설정"], ["8. Chức năng khác", "Các chức năng và cài đặt khác.", "부가기능"], ["9. OK", "Xác nhận lựa chọn.", "확인"], ["10. Quay lại", "Quay lại bước trước hoặc hủy cài đặt.", ""]],
+  tipsH:"Lưu ý", tips:["Vui lòng đóng cửa sổ và cửa ra vào khi bật máy lạnh.", "Vui lòng tắt máy lạnh khi ra ngoài.", "Nút trên điều khiển ghi bằng tiếng Hàn. Nhãn nhỏ cạnh mỗi mục là chữ trên nút đó."]},
+ "th": {title:"วิธีใช้เครื่องปรับอากาศ", lead:"เปลี่ยนระหว่างโหมดเย็นและโหมดอุ่นด้วยปุ่ม Mode (모드) หมายเลขด้านล่างตรงกับหมายเลขในภาพ",
+  items:[["เปิด / ปิด", "เปิดหรือปิดเครื่องปรับอากาศ", ""], ["2. อุณหภูมิ", "กด + หรือ − เพื่อปรับอุณหภูมิ", "온도"], ["3. ไร้ลม (Wind-Free)", "ความเย็นแบบนุ่มนวล ไม่มีลมเป่าตรง", "무풍"], ["4. ทิศทางลม ซ้าย / ขวา", "ปรับทิศทางลมไปทางซ้ายและขวา", ""], ["5. โหมด", "กดแต่ละครั้งเพื่อเปลี่ยนโหมด: เย็น ❄ หรือ อุ่น ☀", "모드"], ["ทิศทางลม ขึ้น / ลง", "ปรับทิศทางลมขึ้นและลง", "바람"], ["7. ตั้งเวลา", "ตั้งเวลาเปิดหรือปิด", "예약설정"], ["8. ฟังก์ชันเพิ่มเติม", "ฟังก์ชันและการตั้งค่าอื่น ๆ", "부가기능"], ["9. ตกลง", "ยืนยันการเลือก", "확인"], ["10. ย้อนกลับ", "กลับไปขั้นตอนก่อนหน้าหรือยกเลิกการตั้งค่า", ""]],
+  tipsH:"โปรดทราบ", tips:["กรุณาปิดหน้าต่างและประตูขณะเปิดเครื่องปรับอากาศ", "กรุณาปิดเครื่องปรับอากาศเมื่อออกไปข้างนอก", "ปุ่มบนรีโมตเป็นภาษาเกาหลี ป้ายเล็กข้างแต่ละข้อคือตัวอักษรบนปุ่มนั้น"]},
+ "id": {title:"Panduan AC", lead:"Ganti antara mode dingin dan hangat dengan tombol Mode (모드). Nomor di bawah sama dengan nomor pada gambar.",
+  items:[["Daya", "Menyalakan atau mematikan AC.", ""], ["2. Suhu", "Tekan + atau − untuk mengatur suhu.", "온도"], ["3. Wind-Free", "Pendinginan lembut tanpa hembusan angin langsung.", "무풍"], ["4. Arah angin kiri / kanan", "Mengubah arah angin ke kiri dan kanan.", ""], ["5. Mode", "Setiap tekan mengganti mode: Dingin ❄ atau Hangat ☀.", "모드"], ["Arah angin atas / bawah", "Mengubah arah angin ke atas dan ke bawah.", "바람"], ["7. Timer", "Mengatur timer atau jadwal.", "예약설정"], ["8. Fungsi lain", "Fitur dan pengaturan lainnya.", "부가기능"], ["9. OK", "Mengonfirmasi pilihan.", "확인"], ["10. Kembali", "Kembali ke langkah sebelumnya atau membatalkan pengaturan.", ""]],
+  tipsH:"Mohon diperhatikan", tips:["Tutup jendela dan pintu saat AC menyala.", "Matikan AC saat Anda keluar.", "Tombol pada remote berbahasa Korea. Label kecil di samping setiap poin adalah tulisan pada tombol itu."]},
+ "es": {title:"Guía del aire acondicionado", lead:"Cambia entre frío y calor con el botón Mode (모드). Los números de abajo coinciden con los de la imagen.",
+  items:[["Encendido", "Enciende o apaga el aire acondicionado.", ""], ["2. Temperatura", "Pulsa + o − para ajustar la temperatura.", "온도"], ["3. Wind-Free", "Frío suave sin corriente de aire directa.", "무풍"], ["4. Aire izquierda / derecha", "Cambia la dirección del aire de lado a lado.", ""], ["5. Modo", "Cada pulsación cambia el modo: Frío ❄ o Calor ☀.", "모드"], ["Aire arriba / abajo", "Cambia la dirección del aire hacia arriba y abajo.", "바람"], ["7. Temporizador", "Programa un temporizador.", "예약설정"], ["8. Más funciones", "Otras funciones y ajustes.", "부가기능"], ["9. OK", "Confirma tu elección.", "확인"], ["10. Atrás", "Vuelve al paso anterior o cancela un ajuste.", ""]],
+  tipsH:"Recuerda", tips:["Cierra ventanas y puertas cuando el aire esté encendido.", "Apaga el aire acondicionado cuando salgas.", "Los botones del mando están en coreano. La etiqueta pequeña junto a cada punto muestra la palabra del botón."]},
+ "fr": {title:"Mode d'emploi de la climatisation", lead:"Passez du froid au chaud avec le bouton Mode (모드). Les numéros ci-dessous correspondent à ceux de l'image.",
+  items:[["Marche / Arrêt", "Allume ou éteint la climatisation.", ""], ["2. Température", "Appuyez sur + ou − pour régler la température.", "온도"], ["3. Wind-Free", "Rafraîchissement doux, sans souffle direct.", "무풍"], ["4. Flux gauche / droite", "Change la direction de l'air de gauche à droite.", ""], ["5. Mode", "Chaque appui change le mode : Froid ❄ ou Chaud ☀.", "모드"], ["Flux haut / bas", "Change la direction de l'air vers le haut et le bas.", "바람"], ["7. Minuterie", "Programme une minuterie.", "예약설정"], ["8. Autres fonctions", "Autres fonctions et réglages.", "부가기능"], ["9. OK", "Confirme votre choix.", "확인"], ["10. Retour", "Revient à l'étape précédente ou annule un réglage.", ""]],
+  tipsH:"À noter", tips:["Fermez fenêtres et portes quand la climatisation est allumée.", "Éteignez la climatisation quand vous sortez.", "Les boutons de la télécommande sont en coréen. La petite étiquette à côté de chaque point indique le mot du bouton."]},
+ "de": {title:"Anleitung Klimaanlage", lead:"Mit der Taste Mode (모드) wechseln Sie zwischen Kühlen und Heizen. Die Nummern unten entsprechen denen im Bild.",
+  items:[["Ein / Aus", "Schaltet die Klimaanlage ein oder aus.", ""], ["2. Temperatur", "Mit + oder − die Temperatur einstellen.", "온도"], ["3. Wind-Free", "Sanfte Kühlung ohne direkten Luftzug.", "무풍"], ["4. Luftstrom links / rechts", "Ändert die Luftrichtung seitlich.", ""], ["5. Modus", "Jeder Druck wechselt den Modus: Kühlen ❄ oder Heizen ☀.", "모드"], ["Luftstrom oben / unten", "Ändert die Luftrichtung nach oben und unten.", "바람"], ["7. Timer", "Timer einstellen.", "예약설정"], ["8. Weitere Funktionen", "Weitere Funktionen und Einstellungen.", "부가기능"], ["9. OK", "Auswahl bestätigen.", "확인"], ["10. Zurück", "Zum vorherigen Schritt oder Einstellung abbrechen.", ""]],
+  tipsH:"Bitte beachten", tips:["Bitte Fenster und Türen schließen, wenn die Klimaanlage läuft.", "Bitte die Klimaanlage ausschalten, wenn Sie gehen.", "Die Tasten der Fernbedienung sind auf Koreanisch. Das kleine Etikett neben jedem Punkt zeigt das Wort auf der Taste."]},
+ "ms": {title:"Panduan Penghawa Dingin", lead:"Tukar antara mod sejuk dan panas dengan butang Mode (모드). Nombor di bawah sama dengan nombor dalam gambar.",
+  items:[["Kuasa", "Hidupkan atau matikan penghawa dingin.", ""], ["2. Suhu", "Tekan + atau − untuk melaraskan suhu.", "온도"], ["3. Wind-Free", "Penyejukan lembut tanpa tiupan angin terus.", "무풍"], ["4. Arah angin kiri / kanan", "Menukar arah angin ke kiri dan kanan.", ""], ["5. Mod", "Setiap tekanan menukar mod: Sejuk ❄ atau Panas ☀.", "모드"], ["Arah angin atas / bawah", "Menukar arah angin ke atas dan ke bawah.", "바람"], ["7. Pemasa", "Tetapkan pemasa.", "예약설정"], ["8. Fungsi lain", "Ciri dan tetapan lain.", "부가기능"], ["9. OK", "Sahkan pilihan anda.", "확인"], ["10. Kembali", "Kembali ke langkah sebelumnya atau batalkan tetapan.", ""]],
+  tipsH:"Sila ambil perhatian", tips:["Sila tutup tingkap dan pintu semasa penghawa dingin dihidupkan.", "Sila matikan penghawa dingin apabila anda keluar.", "Butang pada alat kawalan jauh dalam bahasa Korea. Label kecil di sebelah setiap perkara ialah perkataan pada butang itu."]},
+ "tl": {title:"Gabay sa Aircon", lead:"Magpalit sa pagitan ng malamig at mainit gamit ang Mode button (모드). Ang mga numero sa ibaba ay tugma sa mga numero sa larawan.",
+  items:[["Power", "Buksan o patayin ang aircon.", ""], ["2. Temperatura", "Pindutin ang + o − para itakda ang temperatura.", "온도"], ["3. Wind-Free", "Banayad na lamig nang walang direktang hangin.", "무풍"], ["4. Hangin kaliwa / kanan", "Binabago ang direksyon ng hangin pakaliwa at pakanan.", ""], ["5. Mode", "Bawat pindot ay nagpapalit ng mode: Malamig ❄ o Mainit ☀.", "모드"], ["Hangin taas / baba", "Binabago ang direksyon ng hangin pataas at pababa.", "바람"], ["7. Timer", "Magtakda ng timer.", "예약설정"], ["8. Iba pang function", "Iba pang feature at setting.", "부가기능"], ["9. OK", "Kumpirmahin ang iyong pinili.", "확인"], ["10. Bumalik", "Bumalik sa nakaraang hakbang o kanselahin ang setting.", ""]],
+  tipsH:"Paalala", tips:["Pakisara ang mga bintana at pinto habang naka-on ang aircon.", "Pakipatay ang aircon kapag aalis kayo.", "Nakasulat sa Korean ang mga button ng remote. Ang maliit na label sa tabi ng bawat item ay ang salita sa button na iyon."]},
+ "ru": {title:"Инструкция к кондиционеру", lead:"Переключайте охлаждение и обогрев кнопкой Mode (모드). Номера ниже совпадают с номерами на картинке.",
+  items:[["Питание", "Включает и выключает кондиционер.", ""], ["2. Температура", "Нажимайте + или −, чтобы задать температуру.", "온도"], ["3. Wind-Free", "Мягкое охлаждение без прямого потока воздуха.", "무풍"], ["4. Поток влево / вправо", "Меняет направление воздуха влево и вправо.", ""], ["5. Режим", "Каждое нажатие меняет режим: Охлаждение ❄ или Обогрев ☀.", "모드"], ["Поток вверх / вниз", "Меняет направление воздуха вверх и вниз.", "바람"], ["7. Таймер", "Установка таймера.", "예약설정"], ["8. Другие функции", "Дополнительные функции и настройки.", "부가기능"], ["9. OK", "Подтвердить выбор.", "확인"], ["10. Назад", "Вернуться к предыдущему шагу или отменить настройку.", ""]],
+  tipsH:"Пожалуйста", tips:["Закрывайте окна и двери, когда работает кондиционер.", "Выключайте кондиционер, когда уходите.", "Кнопки на пульте подписаны по-корейски. Маленькая метка рядом с каждым пунктом показывает надпись на кнопке."]},
+ "mn": {title:"Агааржуулагч ашиглах заавар", lead:"Mode (모드) товчоор хөргөх болон халаах горимыг солино. Доорх дугаарууд зурган дээрх дугаартай ижил.",
+  items:[["Асаах / Унтраах", "Агааржуулагчийг асааж, унтраана.", ""], ["2. Температур", "+ эсвэл − дарж температураа тохируулна.", "온도"], ["3. Wind-Free", "Шууд салхигүй зөөлөн хөргөлт.", "무풍"], ["4. Салхи зүүн / баруун", "Салхины чиглэлийг зүүн, баруун тийш өөрчилнө.", ""], ["5. Горим", "Дарах бүрт горим солигдоно: Хөргөх ❄ эсвэл Халаах ☀.", "모드"], ["Салхи дээш / доош", "Салхины чиглэлийг дээш, доош өөрчилнө.", "바람"], ["7. Цаг тохируулга", "Цаг тохируулна.", "예약설정"], ["8. Нэмэлт функц", "Бусад функц, тохиргоо.", "부가기능"], ["9. OK", "Сонголтоо баталгаажуулна.", "확인"], ["10. Буцах", "Өмнөх алхам руу буцах эсвэл тохиргоог цуцлах.", ""]],
+  tipsH:"Анхаарна уу", tips:["Агааржуулагч ажиллаж байхад цонх, хаалгаа хаана уу.", "Гадагш гарахдаа агааржуулагчаа унтраана уу.", "Удирдлагын товчнууд солонгос хэлээр бичигдсэн. Зүйл бүрийн хажууд байгаа жижиг шошго нь тухайн товчны бичиг юм."]}
+};
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const zoom = document.getElementById("zoom"), zoomIn = document.getElementById("zoomIn");
+function openZoom(html) { zoomIn.innerHTML = html; zoom.hidden = false; document.body.style.overflow = "hidden"; zoom.scrollTo(0, 0); document.getElementById("zoomX").focus(); }
+function closeZoom() { zoom.hidden = true; zoomIn.innerHTML = ""; document.body.style.overflow = ""; }
+document.getElementById("zoomX").addEventListener("click", closeZoom);
+zoom.addEventListener("click", e => { if (e.target === zoom || e.target === zoomIn) closeZoom(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !zoom.hidden) closeZoom(); });
+const zoomImg = img => openZoom(`<img class="zimg" src="${img.getAttribute("src")}" alt="" style="width:${Math.max(img.naturalWidth || 600, 360)}px">`);
+function show(l){
+  const t = T[l] || T.en;
+  const items = t.items.map((it, i) => /^\d/.test(it[0]) ? it : [`${i + 1}. ${it[0]}`, it[1], it[2]]);
+  document.documentElement.lang = l;
+  document.getElementById("home").href = "../guide/?lang=" + encodeURIComponent(l);
+  document.getElementById("t-title").textContent = t.title;
+  document.getElementById("t-lead").textContent = t.lead;
+  document.getElementById("t-list").innerHTML = items.map(([h, d, k]) => `<li><b>${esc(h)}</b>${k ? `<span class="kr">${esc(k)}</span>` : ""}<br>${esc(d)}</li>`).join("");
+  const pic = document.getElementById("pic");
+  pic.classList.toggle("en", l === "en" || !T[l]);
+  pic.querySelectorAll(".ov").forEach(o => {
+    const k = o.dataset.k;
+    if (k === "head") { o.innerHTML = `<b>${esc(t.title)}</b><span>${esc(t.lead)}</span>`; return; }
+    const [h, d] = items[+k];
+    o.innerHTML = `<b>${esc(h)}</b>${esc(d)}`;
+  });
+  document.getElementById("t-hint").textContent = "🔍 " + (HINT[l] || HINT.en);
+  document.getElementById("t-tips-h").textContent = t.tipsH;
+  document.getElementById("t-tips").innerHTML = t.tips.map(x => `<li>${esc(x)}</li>`).join("");
+  document.getElementById("lang").value = T[l] ? l : "en";
+  try { localStorage.setItem("ac_lang", l); } catch (e) {}
+}
+document.getElementById("lang").addEventListener("change", e => show(e.target.value));
+const picEl = document.getElementById("pic");
+const openPic = () => { const c = picEl.cloneNode(true); c.removeAttribute("id"); c.removeAttribute("role"); c.removeAttribute("tabindex"); openZoom(c.outerHTML); };
+picEl.addEventListener("click", openPic);
+picEl.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPic(); } });
+let pick = "en";
+try { pick = localStorage.getItem("ac_lang") || ""; } catch (e) { pick = ""; }
+const qLang = new URLSearchParams(location.search).get("lang");
+if (qLang && T[qLang]) pick = qLang;
+if (!pick) {
+  const n = (navigator.language || "en").toLowerCase();
+  const base = n.split("-")[0];
+  pick = n.startsWith("zh") ? (/tw|hk|hant/.test(n) ? "zh-Hant" : "zh-Hans") : (["ko","ja","vi","th","id","es","fr","de","ms","tl","ru","mn"].includes(base) ? base : ({in: "id", fil: "tl"}[base] || "en"));
+}
+show(pick);
+</script>
+</body>
+</html>
