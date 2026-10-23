@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Room Guides | Blue Plane Stay</title>
+<style>
+:root{--navy:#14203A;--ink:#1B2233;--mute:#6E7484;--paper:#FFFCF6;--line:#E2D9C8;--mint:#2E9A8B;--mint-soft:#E4F4F0;--amber:#EFC27A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","PingFang SC","Microsoft YaHei","Hiragino Sans","Yu Gothic",system-ui,sans-serif;line-height:1.55;font-size:16px}
+main{max-width:680px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 6px}
+.brand{color:var(--mute);font-size:14px}
+.lang{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 6px 4px 12px}
+.lang select{font:inherit;font-size:15px;border:0;background:transparent;color:var(--ink);padding:4px 2px;max-width:170px}
+.lang:focus-within{outline:2px solid var(--mint);outline-offset:2px}
+h1{font-size:24px;line-height:1.25;margin:10px 0 14px;color:var(--navy)}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:var(--ink)}
+.card:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.card .ic{flex:none;width:52px;height:52px;border-radius:12px;background:var(--mint-soft);display:grid;place-items:center;font-size:28px}
+.card b{font-size:18px;color:var(--navy)}
+.card .go{margin-left:auto;color:var(--mint);font-size:22px}
+footer{margin-top:18px;color:var(--mute);font-size:13px;text-align:center}
+.top{position:sticky;top:0;z-index:20;background:var(--paper);margin:0 -16px 6px;padding:8px 16px;box-shadow:0 1px 0 var(--line)}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><span class="brand">Blue Plane Stay</span>
+  <label class="lang"><span aria-hidden="true">🌐</span>
+   <select id="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ko">한국어</option>
+    <option value="zh-Hans">简体中文</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="ja">日本語</option>
+    <option value="vi">Tiếng Việt</option>
+    <option value="th">ภาษาไทย</option>
+    <option value="id">Bahasa Indonesia</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="ms">Bahasa Melayu</option>
+    <option value="tl">Filipino</option>
+    <option value="ru">Русский</option>
+    <option value="mn">Монгол</option>
+   </select></label>
+</div>
+<h1 id="t-head">Room guides</h1>
+<div class="cards">
+  <a class="card" id="c-ac" href="../ac/"><span class="ic" aria-hidden="true">❄️</span><b id="t-ac">Air Conditioner Guide</b><span class="go" aria-hidden="true">›</span></a>
+  <a class="card" id="c-la" href="../laundry/"><span class="ic" aria-hidden="true">🧺</span><b id="t-la">Washer and Dryer Guide</b><span class="go" aria-hidden="true">›</span></a>
+  <a class="card" id="c-tv" href="../tv/"><span class="ic" aria-hidden="true">📺</span><b id="t-tv">TV Guide</b><span class="go" aria-hidden="true">›</span></a>
+</div>
+<footer>Blue Plane Stay</footer>
+</main>
+<script>
+const T = {"en": {"head": "Room guides", "ac": "Air Conditioner Guide", "la": "Washer and Dryer Guide", "tv": "TV Guide"}, "ko": {"head": "객실 이용 안내", "ac": "에어컨 사용법", "la": "세탁기, 건조기 사용법", "tv": "TV 사용법"}, "zh-Hans": {"head": "客房使用指南", "ac": "空调使用说明", "la": "洗衣机和烘干机使用说明", "tv": "电视使用说明"}, "zh-Hant": {"head": "客房使用指南", "ac": "冷氣使用說明", "la": "洗衣機與烘乾機使用說明", "tv": "電視使用說明"}, "ja": {"head": "お部屋のご案内", "ac": "エアコンの使い方", "la": "洗濯機と乾燥機の使い方", "tv": "テレビの使い方"}, "vi": {"head": "Hướng dẫn sử dụng phòng", "ac": "Hướng dẫn dùng máy lạnh", "la": "Hướng dẫn máy giặt và máy sấy", "tv": "Hướng dẫn dùng TV"}, "th": {"head": "คู่มือการใช้ห้องพัก", "ac": "วิธีใช้เครื่องปรับอากาศ", "la": "วิธีใช้เครื่องซักผ้าและเครื่องอบผ้า", "tv": "วิธีใช้ทีวี"}, "id": {"head": "Panduan penginapan", "ac": "Panduan AC", "la": "Panduan Mesin Cuci dan Pengering", "tv": "Panduan TV"}, "es": {"head": "Guías del alojamiento", "ac": "Guía del aire acondicionado", "la": "Guía de lavadora y secadora", "tv": "Guía de la TV"}, "fr": {"head": "Guides du logement", "ac": "Mode d'emploi de la climatisation", "la": "Guide lave-linge et sèche-linge", "tv": "Mode d'emploi de la TV"}, "de": {"head": "Hinweise zur Unterkunft", "ac": "Anleitung Klimaanlage", "la": "Anleitung Waschmaschine und Trockner", "tv": "Anleitung Fernseher"}, "ms": {"head": "Panduan penginapan", "ac": "Panduan Penghawa Dingin", "la": "Panduan Mesin Basuh dan Pengering", "tv": "Panduan TV"}, "tl": {"head": "Gabay sa tuluyan", "ac": "Gabay sa Aircon", "la": "Gabay sa Washing Machine at Dryer", "tv": "Gabay sa TV"}, "ru": {"head": "Инструкции для гостей", "ac": "Инструкция к кондиционеру", "la": "Стиральная машина и сушилка", "tv": "Инструкция к телевизору"}, "mn": {"head": "Байрны заавар", "ac": "Агааржуулагч ашиглах заавар", "la": "Угаалгын машин, хатаагч ашиглах заавар", "tv": "Зурагт ашиглах заавар"}};
+function show(l){
+  const t = T[l] || T.en;
+  document.documentElement.lang = l;
+  document.getElementById("t-head").textContent = t.head;
+  document.getElementById("t-ac").textContent = t.ac;
+  document.getElementById("t-la").textContent = t.la;
+  document.getElementById("t-tv").textContent = t.tv;
+  document.getElementById("c-ac").href = "../ac/?lang=" + encodeURIComponent(l);
+  document.getElementById("c-la").href = "../laundry/?lang=" + encodeURIComponent(l);
+  document.getElementById("c-tv").href = "../tv/?lang=" + encodeURIComponent(l);
+  document.getElementById("lang").value = T[l] ? l : "en";
+  try { localStorage.setItem("guide_lang", l); } catch (e) {}
+}
+document.getElementById("lang").addEventListener("change", e => show(e.target.value));
+let pick = "";
+try { pick = localStorage.getItem("guide_lang") || ""; } catch (e) { pick = ""; }
+const qLang = new URLSearchParams(location.search).get("lang");
+if (qLang && T[qLang]) pick = qLang;
+if (!pick) {
+  const n = (navigator.language || "en").toLowerCase();
+  const base = n.split("-")[0];
+  pick = n.startsWith("zh") ? (/tw|hk|hant/.test(n) ? "zh-Hant" : "zh-Hans") : (["ko","ja","vi","th","id","es","fr","de","ms","tl","ru","mn"].includes(base) ? base : ({in: "id", fil: "tl"}[base] || "en"));
+}
+show(T[pick] ? pick : "en");
+</script>
+</body>
+</html>
