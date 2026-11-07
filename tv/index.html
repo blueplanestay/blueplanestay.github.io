@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TV Guide | Blue Plane Stay</title>
+<style>
+:root{--navy:#14203A;--ink:#1B2233;--mute:#6E7484;--paper:#FFFCF6;--line:#E2D9C8;--mint:#2E9A8B;--mint-soft:#E4F4F0;--amber:#EFC27A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","PingFang SC","Microsoft YaHei","Hiragino Sans","Yu Gothic",system-ui,sans-serif;line-height:1.55;font-size:16px}
+main{max-width:680px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 6px}
+.brand{color:var(--mute);font-size:14px}
+.brand a{color:inherit}
+.lang{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 6px 4px 12px}
+.lang select{font:inherit;font-size:15px;border:0;background:transparent;color:var(--ink);padding:4px 2px;max-width:170px}
+.lang:focus-within{outline:2px solid var(--mint);outline-offset:2px}
+h1{font-size:24px;line-height:1.25;margin:4px 0 10px;color:var(--navy)}
+.lead{background:var(--mint-soft);border-radius:12px;padding:10px 12px;margin:0 0 14px}
+.pic{display:grid;grid-template-columns:minmax(0,230px) 1fr;gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.pic img{width:100%;height:auto;border-radius:10px;display:block}
+.legend{display:flex;flex-direction:column;gap:8px;font-size:15px;padding-top:4px}
+.num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--amber);color:var(--navy);font-weight:700;font-size:12px;margin-right:6px;border:1.5px solid var(--navy);flex:none}
+.legend > span{display:flex;align-items:center}
+ol{padding-left:0;list-style:none;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+ol li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+ol li b{color:var(--navy)}
+.tips{margin-top:14px;background:#FFF6E3;border:1px solid var(--amber);border-radius:12px;padding:10px 12px}
+.tips ul{margin:4px 0 0;padding-left:18px}
+.tips li{margin:4px 0}
+footer{margin-top:18px;color:var(--mute);font-size:13px;text-align:center}
+@media (max-width:420px){.pic{grid-template-columns:1fr} .pic img{max-width:260px;margin:0 auto} .legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}}
+.home{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;text-decoration:none;font-size:19px;margin-right:8px;vertical-align:middle}
+.home:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.brand{display:inline-flex;align-items:center;white-space:nowrap}
+@media (max-width:420px){.brand .bname{display:none}}
+.top{position:sticky;top:0;z-index:20;background:var(--paper);margin:0 -16px 6px;padding:8px 16px;box-shadow:0 1px 0 var(--line)}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><span class="brand"><a class="home" id="home" href="../guide/" aria-label="All guides" title="All guides">🏠</a><span class="bname">Blue Plane Stay</span></span>
+  <label class="lang"><span aria-hidden="true">🌐</span>
+   <select id="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ko">한국어</option>
+    <option value="zh-Hans">简体中文</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="ja">日本語</option>
+    <option value="vi">Tiếng Việt</option>
+    <option value="th">ภาษาไทย</option>
+    <option value="id">Bahasa Indonesia</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="ms">Bahasa Melayu</option>
+    <option value="tl">Filipino</option>
+    <option value="ru">Русский</option>
+    <option value="mn">Монгол</option>
+   </select></label>
+</div>
+<h1 id="t-title">TV Guide</h1>
+<p class="lead" id="t-lead"></p>
+<div class="pic">
+  <img src="remote.jpg" alt="TV remote with numbered buttons" width="360" height="570">
+  <div class="legend" id="legend"></div>
+</div>
+<ol id="t-list"></ol>
+<div class="tips"><b id="t-tips-h"></b><ul id="t-tips"></ul></div>
+<footer>Blue Plane Stay</footer>
+</main>
+<script>
+const T = {"en": {"title": "TV Guide", "lead": "TV channels are not available. Watch Netflix or YouTube with the remote.", "short": ["Power", "Netflix", "YouTube", "Arrows + OK", "Back", "Home", "Volume"], "items": [["Turn on", "Press 1."], ["Netflix", "Press 2 and sign in with your own Netflix account."], ["YouTube", "Press 3. You can watch without signing in."], ["Move and select", "Use the arrows and OK (4). 5 goes back, 6 opens the home screen, 7 changes the volume."]], "tipsH": "Before you check out", "tips": ["Please sign out of Netflix: on the Netflix home screen, press Back (5) to open the menu, then Get Help → Sign out → Yes.", "Forgot? You can sign out of all devices from your phone: Netflix Account → Manage access and devices.", "If you signed in to YouTube or other apps, please sign out too."]}, "ko": {"title": "TV 사용법", "lead": "TV 채널은 나오지 않아요. 리모컨으로 넷플릭스나 유튜브를 보실 수 있어요.", "short": ["전원", "넷플릭스", "유튜브", "방향키 + OK", "뒤로", "홈", "음량"], "items": [["켜기", "1번을 누르세요."], ["넷플릭스", "2번을 누르고 본인 넷플릭스 계정으로 로그인하세요."], ["유튜브", "3번을 누르세요. 로그인 없이도 볼 수 있어요."], ["이동과 선택", "방향키와 OK(4)로 고르세요. 5는 뒤로, 6은 홈 화면, 7은 음량이에요."]], "tipsH": "체크아웃 전에", "tips": ["넷플릭스에서 로그아웃해 주세요: 넷플릭스 홈에서 뒤로(5)를 눌러 메뉴를 열고 도움말(Get Help) → 로그아웃(Sign out) → 예.", "잊으셨다면 휴대폰에서도 돼요: 넷플릭스 계정 → 접속 기기 관리(Manage access and devices)에서 모든 기기 로그아웃.", "유튜브 등 다른 앱에 로그인하셨다면 그것도 로그아웃해 주세요."]}, "zh-Hans": {"title": "电视使用说明", "lead": "电视频道无法收看。可用遥控器观看 Netflix 或 YouTube。", "short": ["电源", "Netflix", "YouTube", "方向键 + OK", "返回", "主页", "音量"], "items": [["开机", "按 1。"], ["Netflix", "按 2，用您自己的 Netflix 账号登录。"], ["YouTube", "按 3，无需登录也可观看。"], ["移动和选择", "用方向键和 OK（4）选择。5 返回，6 打开主页，7 调节音量。"]], "tipsH": "退房前", "tips": ["请退出 Netflix：在 Netflix 主页按返回（5）打开菜单，选择“获取帮助（Get Help）”→“退出（Sign out）”→“是”。", "忘记了？也可以在手机上操作：Netflix 账户 →“管理访问权限和设备（Manage access and devices）”，退出所有设备。", "如果登录了 YouTube 等其他应用，也请退出。"]}, "zh-Hant": {"title": "電視使用說明", "lead": "電視頻道無法收看。可用遙控器觀看 Netflix 或 YouTube。", "short": ["電源", "Netflix", "YouTube", "方向鍵 + OK", "返回", "主畫面", "音量"], "items": [["開機", "按 1。"], ["Netflix", "按 2，用您自己的 Netflix 帳號登入。"], ["YouTube", "按 3，不登入也能觀看。"], ["移動與選擇", "用方向鍵和 OK（4）選擇。5 返回，6 開啟主畫面，7 調整音量。"]], "tipsH": "退房前", "tips": ["請登出 Netflix：在 Netflix 主畫面按返回（5）開啟選單，選擇「取得協助（Get Help）」→「登出（Sign out）」→「是」。", "忘了嗎？也可以用手機操作：Netflix 帳戶 →「管理存取權和裝置（Manage access and devices）」，登出所有裝置。", "如果登入了 YouTube 等其他應用程式，也請登出。"]}, "ja": {"title": "テレビの使い方", "lead": "テレビ放送は映りません。リモコンで Netflix や YouTube をご覧いただけます。", "short": ["電源", "Netflix", "YouTube", "方向キー + OK", "戻る", "ホーム", "音量"], "items": [["電源を入れる", "1 を押します。"], ["Netflix", "2 を押し、ご自身の Netflix アカウントでログインしてください。"], ["YouTube", "3 を押します。ログインしなくても見られます。"], ["移動と選択", "方向キーと OK（4）で選びます。5 で戻る、6 でホーム画面、7 で音量です。"]], "tipsH": "チェックアウトの前に", "tips": ["Netflix からログアウトしてください：Netflix のホーム画面で戻る（5）を押してメニューを開き、ヘルプ（Get Help）→ ログアウト（Sign out）→ はい。", "お忘れの場合はスマホからもできます：Netflix アカウント →「アクセスとデバイスの管理（Manage access and devices）」ですべてのデバイスからログアウト。", "YouTube など他のアプリにログインした場合も、ログアウトをお願いします。"]}, "vi": {"title": "Hướng dẫn dùng TV", "lead": "TV không có kênh truyền hình. Bạn có thể xem Netflix hoặc YouTube bằng điều khiển.", "short": ["Nguồn", "Netflix", "YouTube", "Mũi tên + OK", "Quay lại", "Trang chủ", "Âm lượng"], "items": [["Bật TV", "Nhấn 1."], ["Netflix", "Nhấn 2 và đăng nhập bằng tài khoản Netflix của bạn."], ["YouTube", "Nhấn 3. Có thể xem mà không cần đăng nhập."], ["Di chuyển và chọn", "Dùng phím mũi tên và OK (4). 5 để quay lại, 6 mở trang chủ, 7 chỉnh âm lượng."]], "tipsH": "Trước khi trả phòng", "tips": ["Vui lòng đăng xuất Netflix: ở màn hình chính Netflix, nhấn Quay lại (5) để mở menu, chọn Trợ giúp (Get Help) → Đăng xuất (Sign out) → Có.", "Quên rồi? Bạn có thể đăng xuất mọi thiết bị trên điện thoại: Tài khoản Netflix → Quản lý quyền truy cập và thiết bị (Manage access and devices).", "Nếu đã đăng nhập YouTube hoặc ứng dụng khác, vui lòng đăng xuất."]}, "th": {"title": "วิธีใช้ทีวี", "lead": "ทีวีไม่มีช่องรายการ ดู Netflix หรือ YouTube ได้ด้วยรีโมท", "short": ["เปิด/ปิด", "Netflix", "YouTube", "ลูกศร + OK", "ย้อนกลับ", "หน้าหลัก", "ระดับเสียง"], "items": [["เปิดทีวี", "กด 1"], ["Netflix", "กด 2 แล้วเข้าสู่ระบบด้วยบัญชี Netflix ของคุณเอง"], ["YouTube", "กด 3 ดูได้โดยไม่ต้องเข้าสู่ระบบ"], ["เลื่อนและเลือก", "ใช้ปุ่มลูกศรและ OK (4) กด 5 เพื่อย้อนกลับ 6 เพื่อไปหน้าหลัก 7 เพื่อปรับเสียง"]], "tipsH": "ก่อนเช็คเอาท์", "tips": ["กรุณาออกจากระบบ Netflix: ที่หน้าหลักของ Netflix กดย้อนกลับ (5) เพื่อเปิดเมนู เลือก ขอความช่วยเหลือ (Get Help) → ออกจากระบบ (Sign out) → ใช่", "ลืมหรือเปล่า? ออกจากระบบทุกอุปกรณ์ได้จากโทรศัพท์: บัญชี Netflix → จัดการการเข้าถึงและอุปกรณ์ (Manage access and devices)", "หากเข้าสู่ระบบ YouTube หรือแอปอื่น กรุณาออกจากระบบด้วย"]}, "id": {"title": "Panduan TV", "lead": "Saluran TV tidak tersedia. Tonton Netflix atau YouTube dengan remote.", "short": ["Daya", "Netflix", "YouTube", "Panah + OK", "Kembali", "Beranda", "Volume"], "items": [["Nyalakan", "Tekan 1."], ["Netflix", "Tekan 2 lalu masuk dengan akun Netflix Anda sendiri."], ["YouTube", "Tekan 3. Bisa ditonton tanpa masuk akun."], ["Pindah dan pilih", "Gunakan tombol panah dan OK (4). 5 untuk kembali, 6 untuk beranda, 7 untuk volume."]], "tipsH": "Sebelum check-out", "tips": ["Mohon keluar dari Netflix: di beranda Netflix, tekan Kembali (5) untuk membuka menu, lalu Bantuan (Get Help) → Keluar (Sign out) → Ya.", "Lupa? Anda bisa keluar dari semua perangkat lewat ponsel: Akun Netflix → Kelola akses dan perangkat (Manage access and devices).", "Jika masuk ke YouTube atau aplikasi lain, mohon keluar juga."]}, "es": {"title": "Guía de la TV", "lead": "No hay canales de TV. Puedes ver Netflix o YouTube con el mando.", "short": ["Encendido", "Netflix", "YouTube", "Flechas + OK", "Atrás", "Inicio", "Volumen"], "items": [["Encender", "Pulsa 1."], ["Netflix", "Pulsa 2 e inicia sesión con tu propia cuenta de Netflix."], ["YouTube", "Pulsa 3. Puedes verlo sin iniciar sesión."], ["Moverse y elegir", "Usa las flechas y OK (4). 5 vuelve atrás, 6 abre la pantalla de inicio y 7 cambia el volumen."]], "tipsH": "Antes de salir", "tips": ["Cierra sesión en Netflix: en la pantalla de inicio de Netflix, pulsa Atrás (5) para abrir el menú y elige Obtener ayuda (Get Help) → Cerrar sesión (Sign out) → Sí.", "¿Se te olvidó? Puedes cerrar sesión en todos los dispositivos desde el móvil: Cuenta de Netflix → Administrar acceso y dispositivos (Manage access and devices).", "Si iniciaste sesión en YouTube u otras apps, cierra sesión también."]}, "fr": {"title": "Mode d'emploi de la TV", "lead": "Les chaînes de télévision ne sont pas disponibles. Regardez Netflix ou YouTube avec la télécommande.", "short": ["Marche/arrêt", "Netflix", "YouTube", "Flèches + OK", "Retour", "Accueil", "Volume"], "items": [["Allumer", "Appuyez sur 1."], ["Netflix", "Appuyez sur 2 et connectez-vous avec votre propre compte Netflix."], ["YouTube", "Appuyez sur 3. Vous pouvez regarder sans vous connecter."], ["Se déplacer et choisir", "Utilisez les flèches et OK (4). 5 pour revenir, 6 pour l'écran d'accueil, 7 pour le volume."]], "tipsH": "Avant votre départ", "tips": ["Déconnectez-vous de Netflix : sur l'accueil Netflix, appuyez sur Retour (5) pour ouvrir le menu, puis Obtenir de l'aide (Get Help) → Se déconnecter (Sign out) → Oui.", "Oublié ? Vous pouvez vous déconnecter de tous les appareils depuis votre téléphone : Compte Netflix → Gérer l'accès et les appareils (Manage access and devices).", "Si vous vous êtes connecté à YouTube ou à d'autres applis, déconnectez-vous aussi."]}, "de": {"title": "Anleitung Fernseher", "lead": "Fernsehsender sind nicht verfügbar. Mit der Fernbedienung können Sie Netflix oder YouTube schauen.", "short": ["Ein/Aus", "Netflix", "YouTube", "Pfeile + OK", "Zurück", "Startseite", "Lautstärke"], "items": [["Einschalten", "Drücken Sie 1."], ["Netflix", "Drücken Sie 2 und melden Sie sich mit Ihrem eigenen Netflix-Konto an."], ["YouTube", "Drücken Sie 3. Sie können ohne Anmeldung schauen."], ["Bewegen und auswählen", "Mit den Pfeilen und OK (4) auswählen. 5 geht zurück, 6 öffnet die Startseite, 7 ändert die Lautstärke."]], "tipsH": "Vor dem Check-out", "tips": ["Bitte melden Sie sich bei Netflix ab: Auf der Netflix-Startseite Zurück (5) drücken, um das Menü zu öffnen, dann Hilfe (Get Help) → Abmelden (Sign out) → Ja.", "Vergessen? Sie können sich auch am Handy von allen Geräten abmelden: Netflix-Konto → Zugriff und Geräte verwalten (Manage access and devices).", "Wenn Sie sich bei YouTube oder anderen Apps angemeldet haben, melden Sie sich bitte ebenfalls ab."]}, "ms": {"title": "Panduan TV", "lead": "Saluran TV tidak tersedia. Tonton Netflix atau YouTube dengan alat kawalan jauh.", "short": ["Kuasa", "Netflix", "YouTube", "Anak panah + OK", "Kembali", "Laman utama", "Kelantangan"], "items": [["Hidupkan", "Tekan 1."], ["Netflix", "Tekan 2 dan log masuk dengan akaun Netflix anda sendiri."], ["YouTube", "Tekan 3. Boleh tonton tanpa log masuk."], ["Gerak dan pilih", "Guna butang anak panah dan OK (4). 5 untuk kembali, 6 untuk laman utama, 7 untuk kelantangan."]], "tipsH": "Sebelum daftar keluar", "tips": ["Sila log keluar daripada Netflix: di laman utama Netflix, tekan Kembali (5) untuk membuka menu, kemudian Dapatkan Bantuan (Get Help) → Log keluar (Sign out) → Ya.", "Terlupa? Anda boleh log keluar daripada semua peranti melalui telefon: Akaun Netflix → Urus akses dan peranti (Manage access and devices).", "Jika anda log masuk ke YouTube atau aplikasi lain, sila log keluar juga."]}, "tl": {"title": "Gabay sa TV", "lead": "Walang TV channel. Puwede kayong manood ng Netflix o YouTube gamit ang remote.", "short": ["Power", "Netflix", "YouTube", "Arrow + OK", "Bumalik", "Home", "Volume"], "items": [["Buksan", "Pindutin ang 1."], ["Netflix", "Pindutin ang 2 at mag-sign in gamit ang sarili ninyong Netflix account."], ["YouTube", "Pindutin ang 3. Puwedeng manood kahit hindi naka-sign in."], ["Lumipat at pumili", "Gamitin ang arrow at OK (4). 5 para bumalik, 6 para sa home screen, 7 para sa volume."]], "tipsH": "Bago mag-check out", "tips": ["Paki-sign out sa Netflix: sa Netflix home screen, pindutin ang Bumalik (5) para buksan ang menu, tapos Get Help → Sign out → Yes.", "Nakalimutan? Puwede kayong mag-sign out sa lahat ng device mula sa phone: Netflix Account → Manage access and devices.", "Kung nag-sign in kayo sa YouTube o ibang app, paki-sign out din."]}, "ru": {"title": "Инструкция к телевизору", "lead": "Телеканалы не показывают. С помощью пульта можно смотреть Netflix или YouTube.", "short": ["Питание", "Netflix", "YouTube", "Стрелки + OK", "Назад", "Главная", "Громкость"], "items": [["Включить", "Нажмите 1."], ["Netflix", "Нажмите 2 и войдите в свой аккаунт Netflix."], ["YouTube", "Нажмите 3. Смотреть можно без входа в аккаунт."], ["Перемещение и выбор", "Стрелки и OK (4) для выбора. 5 — назад, 6 — главный экран, 7 — громкость."]], "tipsH": "Перед выездом", "tips": ["Пожалуйста, выйдите из Netflix: на главном экране Netflix нажмите Назад (5), чтобы открыть меню, затем Помощь (Get Help) → Выйти (Sign out) → Да.", "Забыли? Выйти на всех устройствах можно с телефона: Аккаунт Netflix → Управление доступом и устройствами (Manage access and devices).", "Если вы входили в YouTube или другие приложения, пожалуйста, выйдите и из них."]}, "mn": {"title": "Зурагт ашиглах заавар", "lead": "Телевизийн суваг гарахгүй. Алсын удирдлагаар Netflix эсвэл YouTube үзэж болно.", "short": ["Асаах/унтраах", "Netflix", "YouTube", "Сум + OK", "Буцах", "Нүүр", "Дууны хэмжээ"], "items": [["Асаах", "1-ийг дарна."], ["Netflix", "2-ыг дарж өөрийн Netflix бүртгэлээр нэвтэрнэ үү."], ["YouTube", "3-ыг дарна. Нэвтрэхгүйгээр үзэж болно."], ["Шилжих, сонгох", "Сум болон OK (4)-оор сонгоно. 5 буцах, 6 нүүр дэлгэц, 7 дууны хэмжээ."]], "tipsH": "Гарахаасаа өмнө", "tips": ["Netflix-ээс гарна уу: Netflix-ийн нүүр дэлгэц дээр Буцах (5)-ыг дарж цэсийг нээгээд Get Help → Sign out → Yes.", "Мартсан уу? Утаснаасаа бүх төхөөрөмжөөс гарах боломжтой: Netflix бүртгэл → Manage access and devices.", "YouTube болон бусад апп-д нэвтэрсэн бол мөн гарна уу."]}};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+function show(l){
+  const t = T[l] || T.en;
+  document.documentElement.lang = l;
+  document.getElementById("home").href = "../guide/?lang=" + encodeURIComponent(l);
+  document.getElementById("t-title").textContent = t.title;
+  document.getElementById("t-lead").textContent = t.lead;
+  document.getElementById("legend").innerHTML = t.short.map((w, i) => `<span><span class="num">${i + 1}</span>${esc(w)}</span>`).join("");
+  document.getElementById("t-list").innerHTML = t.items.map(([h, d]) => `<li><b>${esc(h)}</b><br>${esc(d)}</li>`).join("");
+  document.getElementById("t-tips-h").textContent = t.tipsH;
+  document.getElementById("t-tips").innerHTML = t.tips.map(x => `<li>${esc(x)}</li>`).join("");
+  document.getElementById("lang").value = T[l] ? l : "en";
+  try { localStorage.setItem("tv_lang", l); } catch (e) {}
+}
+document.getElementById("lang").addEventListener("change", e => show(e.target.value));
+let pick = "";
+try { pick = localStorage.getItem("tv_lang") || ""; } catch (e) { pick = ""; }
+const qLang = new URLSearchParams(location.search).get("lang");
+if (qLang && T[qLang]) pick = qLang;
+if (!pick) {
+  const n = (navigator.language || "en").toLowerCase();
+  const base = n.split("-")[0];
+  pick = n.startsWith("zh") ? (/tw|hk|hant/.test(n) ? "zh-Hant" : "zh-Hans") : (["ko","ja","vi","th","id","es","fr","de","ms","tl","ru","mn"].includes(base) ? base : ({in: "id", fil: "tl"}[base] || "en"));
+}
+show(T[pick] ? pick : "en");
+</script>
+</body>
+</html>
